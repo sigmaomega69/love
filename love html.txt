@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pytanie</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .container {
+            position: relative;
+        }
+        .emoji {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0;
+            animation: floatUp 1s ease-out;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-50px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Czy zostaniesz moją dziewczyną?</h1>
+    <button class="button" onclick="showEmojis('❤️')">Tak</button>
+    <button class="button" onclick="showEmojis('😢')">Nie</button>
+    <div class="container" id="emojiContainer"></div>
+    
+    <script>
+        function showEmojis(emoji) {
+            const container = document.getElementById("emojiContainer");
+            for (let i = 0; i < 10; i++) {
+                let span = document.createElement("span");
+                span.className = "emoji";
+                span.innerHTML = emoji;
+                span.style.left = Math.random() * 100 + "%";
+                container.appendChild(span);
+                setTimeout(() => span.remove(), 1000);
+            }
+        }
+    </script>
+</body>
+</html>
